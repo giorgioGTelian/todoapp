@@ -1,11 +1,13 @@
 import React from "react";
 
-const Task = ({ task, onClick }) => {
+const Task = ({ task, deleteTask, categoryId }) => {
     return (
-        <li onClick={() => onClick(task.id)}>
-        {task.name}
-        </li>
+     <div className="task">
+       <input type="checkbox" checked={task.completed} />
+       <span>{task.title}</span>
+       <button onClick={() => deleteTask(categoryId, task.id)}>Cancella Compito</button>
+     </div>
     );
-};
+   };
 
 export default Task;
