@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PageTitle from './components/PageTitle';
 import AllTabs from './components/AllTabs';
+import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
+import Navbar from 'react-bootstrap/Navbar';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const App = () => {
   const [categories, setCategories] = useState([]);
@@ -53,19 +59,32 @@ const App = () => {
   })
   );
   };
-
+ /* TODO REFRACTOR CODE */
   return (
     <>
+    <div className="main_content">
   <PageTitle>TODO List</PageTitle>
-  <div className="main_content">
+  <Navbar className="bg-body-tertiary justify-content-between navbar.header">
+      <Form inline className='d-flex justify-content-center w-100'>
+        <Row>
+          <Col xs="auto">
+            <Form.Control
+              type="text" 
+              placeholder="Aggiungi una categoria..." 
+              value={newCategoryTitle} 
+              onChange={(e) => setNewCategoryTitle(e.target.value)}
+              className="me-2"
+            />
+          </Col>
+          <Col xs="auto">
+          <Button variant="primary" onClick={addCategory}>
+        Aggiungi Categoria
+        </Button>
+          </Col>
+        </Row>
+      </Form>
+    </Navbar>  
   <AllTabs categories={categories} addTask={addTask} deleteTask={deleteTask} deleteCategory={deleteCategory} />
-  <input 
-    type="text" 
-    placeholder="Aggiungi una categoria..." 
-    value={newCategoryTitle} 
-    onChange={(e) => setNewCategoryTitle(e.target.value)}
-  />
-  <button onClick={addCategory}>Aggiungi Categoria</button>
   </div>
   </>
   );
