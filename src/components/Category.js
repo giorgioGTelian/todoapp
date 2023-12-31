@@ -30,15 +30,23 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory }) => {
     />
     <button onClick={handleAddTask}>Aggiungi Compito</button>
     
+    
+    {tasks && tasks.length === 0 && <p>Non ci sono compiti</p>}
     {showToast && 
-    <Toast onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide>
+    <Toast
+    position="bottom-right"
+        toastOptions={{
+            style: {
+            fontSize: '1.4rem',
+            },
+        }}
+    onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide>
         <Toast.Header>
         <strong className="me-auto">Errore</strong>
         </Toast.Header>
         <Toast.Body>Campi nulli non accetti</Toast.Body>
     </Toast>
     }
-    {tasks && tasks.length === 0 && <p>Non ci sono compiti</p>}
     </div>
     );
 };
