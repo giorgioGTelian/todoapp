@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Category from './components/Category';
+import PageTitle from './components/PageTitle';
 import './App.css';
 
 const App = () => {
@@ -53,7 +54,9 @@ const App = () => {
   };
 
   return (
-  <div className="app">
+    <>
+  <PageTitle>TODO List</PageTitle>
+  <div className="main_content">
   {categories.map((category) => (
     <Category key={category.id} category={category} tasks={category.tasks} addTask={addTask} deleteTask={deleteTask} deleteCategory={deleteCategory} />
   ))}
@@ -65,6 +68,7 @@ const App = () => {
   />
   <button onClick={addCategory}>Aggiungi Categoria</button>
   </div>
+  </>
   );
 };
 

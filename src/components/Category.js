@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Task from './Task';
-import { Toast, Button } from 'react-bootstrap';
+import Toast from 'react-bootstrap/Toast';
 
 const Category = ({ category, tasks, addTask, deleteTask, deleteCategory }) => {
     const [newTaskTitle, setNewTaskTitle] = useState('');
@@ -18,6 +18,7 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory }) => {
     return (
     <div className="category">
     <h2>{category.title}</h2>
+    <button onClick={() => deleteCategory(category.id)}>Elimina Categoria</button>
     {tasks && tasks.length > 0 && tasks.map((task) => (
         <Task key={task.id} task={task} deleteTask={deleteTask} categoryId={category.id} />
     ))}
@@ -28,6 +29,7 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory }) => {
         onChange={(e) => setNewTaskTitle(e.target.value)}
     />
     <button onClick={handleAddTask}>Aggiungi Compito</button>
+    
     {showToast && 
     <Toast onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide>
         <Toast.Header>
@@ -36,7 +38,7 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory }) => {
         <Toast.Body>Campi nulli non accetti</Toast.Body>
     </Toast>
     }
-    {tasks && tasks.length > 0 && <button onClick={() => deleteCategory(category.id)}>Cancella Categoria</button>}
+    {tasks && tasks.length === 0 && <p>Non ci sono compiti</p>}
     </div>
     );
 };
