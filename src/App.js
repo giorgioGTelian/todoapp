@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Category from './components/Category';
 import PageTitle from './components/PageTitle';
+import AllTabs from './components/AllTabs';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 const App = () => {
@@ -57,9 +58,19 @@ const App = () => {
     <>
   <PageTitle>TODO List</PageTitle>
   <div className="main_content">
-  {categories.map((category) => (
+ {/*  {categories.map((category) => (
     <Category key={category.id} category={category} tasks={category.tasks} addTask={addTask} deleteTask={deleteTask} deleteCategory={deleteCategory} />
-  ))}
+  ))} */}
+
+{/* <Tabs defaultActiveKey={categories[0]?.id || ''} id="category-tabs" className="mb-3"
+      justify>
+         {categories.map((category) => (
+           <Tab eventKey={category.id} title={category.title} key={category.id}>
+             <Category category={category} tasks={category.tasks} addTask={addTask} deleteTask={deleteTask} deleteCategory={deleteCategory} />
+           </Tab>
+         ))}
+       </Tabs> */}
+         <AllTabs categories={categories} addTask={addTask} deleteTask={deleteTask} deleteCategory={deleteCategory} />
   <input 
     type="text" 
     placeholder="Aggiungi una categoria..." 
