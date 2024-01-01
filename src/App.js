@@ -59,6 +59,40 @@ const App = () => {
   })
   );
   };
+  const editTask = (categoryId, taskId, newTitle) => {
+    setCategories(
+      categories.map((category) => {
+        if (category.id === categoryId) {
+          return {
+            ...category,
+            tasks: category.tasks.map((task) =>
+              task.id === taskId ? { ...task, title: newTitle } : task
+            ),
+          };
+        } else {
+          return category;
+        }
+      })
+    );
+   };
+  
+   const toggleComplete = (categoryId, taskId) => {
+    setCategories(
+      categories.map((category) => {
+        if (category.id === categoryId) {
+          return {
+            ...category,
+            tasks: category.tasks.map((task) =>
+              task.id === taskId ? { ...task, completed: !task.completed } : task
+            ),
+          };
+        } else {
+          return category;
+        }
+      })
+    );
+   };
+  
  /* TODO REFRACTOR CODE */
   return (
     <>
@@ -84,7 +118,7 @@ const App = () => {
         </Row>
       </Form>
     </Navbar>  
-  <AllTabs categories={categories} addTask={addTask} deleteTask={deleteTask} deleteCategory={deleteCategory} />
+    <AllTabs categories={categories} addTask={addTask} deleteTask={deleteTask} deleteCategory={deleteCategory} editTask={editTask} toggleComplete={toggleComplete} />
   </div>
   </>
   );
