@@ -34,16 +34,18 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggle
     <Card.Subtitle className="mb-1 text-muted">Compiti completati: {tasks.filter((task) => task.completed).length}</Card.Subtitle>
     <hr />
     <Card.Title>Compiti</Card.Title>
+    <Card.Text>
     {tasks && tasks.length === 0 && <Badge bg="warning" text="dark">
         Non ci sono compiti
     </Badge>}
-    <Card.Text>
+    
     {tasks && tasks.length > 0 && tasks?.filter(task => !task.completed).map((task) => (
    <Task key={task.id} task={task} deleteTask={deleteTask} categoryId={category.id} toggleComplete={toggleComplete} editTask={editTask}/>
 ))}
 
-
+</Card.Text>
     <hr />
+    <Card.Text>
     <Form inline className='d-flex justify-content-center w-100'>
             <Row>
             <Col xs="auto">
