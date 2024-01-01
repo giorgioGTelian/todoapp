@@ -9,10 +9,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggleComplete  }) => {
+const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggleComplete, editTask }) => {
     const [newTaskTitle, setNewTaskTitle] = useState('');
     const [showToast, setShowToast] = useState(false);
-
+ 
     const handleAddTask = () => {
     if (newTaskTitle === '') {
     setShowToast(true);
@@ -38,9 +38,10 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggle
         Non ci sono compiti
     </Badge>}
     <Card.Text>
-    {tasks && tasks.length > 0 && tasks.map((task) => (
-  <Task key={task.id} task={task} deleteTask={deleteTask} categoryId={category.id} toggleComplete={toggleComplete} />
+    {tasks && tasks.length > 0 && tasks?.filter(task => !task.completed).map((task) => (
+   <Task key={task.id} task={task} deleteTask={deleteTask} categoryId={category.id} toggleComplete={toggleComplete} editTask={editTask}/>
 ))}
+
 
     <hr />
     <Form inline className='d-flex justify-content-center w-100'>
