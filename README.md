@@ -1,6 +1,7 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Todo app
+<img src="https://i.imgur.com/pqUcplz.png">
+this is my todo app as requested it does not use any backend and it allows to save categorized task.
+you can mark any task as completed
 
 ## Available Scripts
 
