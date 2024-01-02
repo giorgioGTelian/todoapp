@@ -10,10 +10,15 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+/**
+ * Represents the main component of the TODO app.
+ * @returns {JSX.Element} The JSX element representing the App component.
+ */
 const App = () => {
   const [categories, setCategories] = useState([]);
   const [newCategoryTitle, setNewCategoryTitle] = useState('');
 
+  /* storage */
   useEffect(() => {
   const categoriesFromStorage = localStorage.getItem('categories');
   if (categoriesFromStorage) {
@@ -25,6 +30,7 @@ const App = () => {
   localStorage.setItem('categories', JSON.stringify(categories));
   }, [categories]);
 
+  /* functions */
   const addCategory = () => {
   if (newCategoryTitle !== '') {
   setCategories([...categories, { id: Date.now(), title: newCategoryTitle, tasks: [] }]);
@@ -74,9 +80,9 @@ const App = () => {
         }
       })
     );
-   };
-  
-   const toggleComplete = (categoryId, taskId) => {
+  };
+
+  const toggleComplete = (categoryId, taskId) => {
     setCategories(
       categories.map((category) => {
         if (category.id === categoryId) {
@@ -91,17 +97,16 @@ const App = () => {
         }
       })
     );
-   };
-  
- /* TODO REFRACTOR CODE */
+  };
+
   return (
     <>
     <div className="main_content">
   <PageTitle>TODO List</PageTitle>
   <Navbar className="bg-body-tertiary justify-content-between navbar.header">
-      <Form inline className='d-flex justify-content-center w-100'>
+      <Form inline className='g-1 d-flex justify-content-center w-100'>
         <Row>
-          <Col xs="auto">
+          <Col xs="auto" className='justify-content-center g-1'>
             <Form.Control
               type="text" 
               placeholder="Aggiungi una categoria..." 
@@ -110,7 +115,7 @@ const App = () => {
               className="me-2"
             />
           </Col>
-          <Col xs="auto">
+          <Col xs="auto" className='justify-content-center g-1'>
           <Button variant="primary" onClick={addCategory}>
         Aggiungi Categoria
         </Button>

@@ -10,18 +10,28 @@ import { PencilSquare } from "react-bootstrap-icons";
 import '../Style/modules/task.module.css';
 import '../Style/modules/task.module.css';
 
+/**
+ * Represents a task component.
+ * @param {Object} props - The props for the Task component.
+ * @param {Object} props.task - The task object.
+ * @param {Function} props.deleteTask - The function to delete a task.
+ * @param {string} props.categoryId - The category ID.
+ * @param {Function} props.toggleComplete - The function to toggle task completion.
+ * @param {Function} props.editTask - The function to edit a task.
+ * @returns {JSX.Element} The Task component.
+ */
 const Task = ({ task, deleteTask, categoryId, toggleComplete, editTask }) => {
- const [isEditing, setIsEditing] = useState(false);
- const [newTitle, setNewTitle] = useState(task.title);
+  const [isEditing, setIsEditing] = useState(false);
+  const [newTitle, setNewTitle] = useState(task.title);
 
- const handleSave = () => {
- if (!task.completed) {
-   editTask(categoryId, task.id, newTitle);
-   setIsEditing(false);
- }
- };
+const handleSave = () => {
+  if (!task.completed) {
+    editTask(categoryId, task.id, newTitle);
+    setIsEditing(false);
+  }
+};
 
- return (
+return (
     <div className="mb-2 br-4 d-flex justify-content-space-between align-items-center" style={{ justifyContent: 'space-between!important' }}>
         <Form inline className='g-1 justify-content-flex-start'>
             <Row>

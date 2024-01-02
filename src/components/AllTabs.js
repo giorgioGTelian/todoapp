@@ -2,6 +2,17 @@ import React from 'react';
 import { Tab, Nav, Row, Col } from 'react-bootstrap';
 import Category from './Category';
 
+/**
+ * Renders a component that displays all tabs for different categories.
+ *
+ * @param {Object[]} categories - An array of category objects.
+ * @param {Function} addTask - A function to add a new task.
+ * @param {Function} deleteTask - A function to delete a task.
+ * @param {Function} deleteCategory - A function to delete a category.
+ * @param {Function} toggleComplete - A function to toggle the completion status of a task.
+ * @param {Function} editTask - A function to edit a task.
+ * @returns {JSX.Element} The rendered AllTabs component.
+ */
 const AllTabs = ({ categories, addTask, deleteTask, deleteCategory, toggleComplete, editTask }) => {
     return (
         <>

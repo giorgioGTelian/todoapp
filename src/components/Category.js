@@ -10,6 +10,18 @@ import Col from 'react-bootstrap/Col';
 import { Trash } from 'react-bootstrap-icons';
 
 
+/**
+ * Represents a category component.
+ * @param {Object} props - The component props.
+ * @param {Object} props.category - The category object.
+ * @param {Array} props.tasks - The tasks array.
+ * @param {Function} props.addTask - The function to add a task.
+ * @param {Function} props.deleteTask - The function to delete a task.
+ * @param {Function} props.deleteCategory - The function to delete a category.
+ * @param {Function} props.toggleComplete - The function to toggle task completion.
+ * @param {Function} props.editTask - The function to edit a task.
+ * @returns {JSX.Element} The rendered category component.
+ */
 const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggleComplete, editTask }) => {
     const [newTaskTitle, setNewTaskTitle] = useState('');
     const [showToast, setShowToast] = useState(false);
