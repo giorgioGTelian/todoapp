@@ -3,6 +3,28 @@
 this is my todo app as requested it does not use any backend and it allows to save categorized task.
 you can mark any task as completed
 
+## Project structure
+todo-app/ <br>
+├── node_modules/ <br>
+├── public/ <br>
+│  ├── index.html  <br>
+│  └── ... <br>
+├── src/ <br>
+│  ├── components/ <br>
+│  │  ├── AllTabs.js <br>
+│  │  ├── Category.js <br>
+│  │  ├── PageTitle.js <br>
+│  │  └── Task.js <br>
+│  ├── style/ <br>
+│  │  ├── .. <br>
+│  ├── App.css <br>
+│  ├── App.js <br>
+│  ├── index.css <br>
+│  └── index.js <br>
+├── package.json <br>
+└── ... <br>
+
+
 ## Available Scripts
 
 In the project directory, you can run:
