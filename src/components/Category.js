@@ -7,6 +7,7 @@ import Badge from 'react-bootstrap/Badge';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Trash } from 'react-bootstrap-icons';
 
 
 const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggleComplete, editTask }) => {
@@ -27,8 +28,9 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggle
         <Card style={{ width: '50rem' }}>
     <div className="category">
     <Card.Body>
-    <Card.Title>Categoria Selezionata: {category.title}</Card.Title>
-    <Button onClick={() => deleteCategory(category.id)}>Elimina Categoria</Button>
+    <Card.Title className="mb-2 d-flex justify-content-space-between">Categoria Selezionata: {category.title}
+    <Button onClick={() => deleteCategory(category.id)} size="sm"><Trash /></Button>
+    </Card.Title>
     <hr />
     <Card.Subtitle className="mb-1 text-muted">Compiti rimanenti: {tasks.filter((task) => !task.completed).length}</Card.Subtitle>
     <Card.Subtitle className="mb-1 text-muted">Compiti completati: {tasks.filter((task) => task.completed).length}</Card.Subtitle>
@@ -36,11 +38,19 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggle
     <Card.Title>Compiti</Card.Title>
     <Card.Text>
     {tasks && tasks.length === 0 && <Badge bg="warning" text="dark">
-        Non ci sono compiti
+        Non sono mai stati aggiunti compiti a questa categoria
+    </Badge>}
+    {/* if the all the task are completed add */}
+    {tasks && tasks.length > 0 && tasks.every((task) => task.completed) && <Badge bg="success" text="dark">
+        Tutti i compiti sono stati completati per questa categoria
+    </Badge>}
+    {/* if all the task are eliminated add */}
+    {tasks && tasks.length > 0 && tasks.every((task) => task.deleted) && <Badge bg="danger" text="dark">
+        Tutti i compiti sono stati eliminati per questa categoria
     </Badge>}
     
     {tasks && tasks.length > 0 && tasks?.filter(task => !task.completed).map((task) => (
-   <Task key={task.id} task={task} deleteTask={deleteTask} categoryId={category.id} toggleComplete={toggleComplete} editTask={editTask}/>
+    <Task key={task.id} task={task} deleteTask={deleteTask} categoryId={category.id} toggleComplete={toggleComplete} editTask={editTask}/>
 ))}
 
 </Card.Text>

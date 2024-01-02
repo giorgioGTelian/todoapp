@@ -1,0 +1,14 @@
+.task {
+    justify-content: space-between !important;
+}
+.todoItem_todoDetails__zH8Q3 {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+.todoItem_icon__\+DYyU, .todoItem_todoActions__CuQMN {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}

@@ -4,6 +4,14 @@
 .main_content {
   text-align: center;
   justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 90%;
+}
+.content_wrapper {
+  background-color: var(--bg-2);
+  border-radius: 12px;
+  padding: 2rem;
 }
 .navbar.header {
   background-color: #fff;

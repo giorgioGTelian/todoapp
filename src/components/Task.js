@@ -7,7 +7,8 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Trash } from 'react-bootstrap-icons';
 import { Check2 } from 'react-bootstrap-icons';
 import { PencilSquare } from "react-bootstrap-icons";
-
+import '../Style/modules/task.module.css';
+import '../Style/modules/task.module.css';
 
 const Task = ({ task, deleteTask, categoryId, toggleComplete, editTask }) => {
  const [isEditing, setIsEditing] = useState(false);
@@ -21,8 +22,8 @@ const Task = ({ task, deleteTask, categoryId, toggleComplete, editTask }) => {
  };
 
  return (
-    <div className="task">
-        <Form inline className='d-flex justify-content-center w-100'>
+    <div className="mb-2 br-4 d-flex justify-content-space-between align-items-center" style={{ justifyContent: 'space-between!important' }}>
+        <Form inline className='g-1 justify-content-flex-start'>
             <Row>
               <Col xs="auto">
                 {isEditing ? (
@@ -35,18 +36,18 @@ const Task = ({ task, deleteTask, categoryId, toggleComplete, editTask }) => {
                     <span className={task.completed ? 'completed' : ''}>{task.title}</span>
                 )}
               </Col>
-              <Col xs="auto">
-              <ButtonGroup className="mb-2">
-                <Button onClick={() => deleteTask(categoryId, task.id)}><Trash /></Button>                
+            </Row>
+        </Form>
+        <Row className='justify-content-center g-1'>
+        <ButtonGroup className="mb-2">
                 <Button onClick={() => toggleComplete(categoryId, task.id)}><Check2 /></Button>
                 <Button onClick={() => setIsEditing(!isEditing)}><PencilSquare /></Button>
                 {isEditing && <Button onClick={handleSave}>Salva</Button>}
+                <Button onClick={() => deleteTask(categoryId, task.id)}><Trash /></Button>    
               </ButtonGroup>
-              </Col>
-            </Row>
-        </Form>
+        </Row>
     </div>
- );
+  );
 };
 
 export default Task;

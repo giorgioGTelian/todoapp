@@ -4,10 +4,13 @@ import Category from './Category';
 
 const AllTabs = ({ categories, addTask, deleteTask, deleteCategory, toggleComplete, editTask }) => {
     return (
-    <Tab.Container defaultActiveKey={categories[0]?.id || ''}>
+        <>
+    <Tab.Container justify defaultActiveKey={categories[0]?.id || ''}>
         <Row>
         <Col sm={3}>
-            <Nav variant="underline" className="flex-column">
+        <h5> Elenco delle Categorie </h5>
+        <hr />
+            <Nav justify variant="pills" className="flex-column" activeKey={categories[0]?.id} style={{lineBreak:'anywhere'}}>
             {categories.map((category) => (
                 <Nav.Item key={category.id}>
                 <Nav.Link eventKey={category.id}>{category.title}</Nav.Link>
@@ -26,6 +29,7 @@ const AllTabs = ({ categories, addTask, deleteTask, deleteCategory, toggleComple
         </Col>
         </Row>
     </Tab.Container>
+    </>
     );
 };
 

@@ -118,7 +118,9 @@ const App = () => {
         </Row>
       </Form>
     </Navbar>  
+    <div className="content_wrapper">
     <AllTabs categories={categories} addTask={addTask} deleteTask={deleteTask} deleteCategory={deleteCategory} editTask={editTask} toggleComplete={toggleComplete} />
+    </div>
   </div>
   </>
   );
