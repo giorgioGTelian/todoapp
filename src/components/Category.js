@@ -25,11 +25,11 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggle
 
     return (
         <>
-        <Card style={{ width: '50rem' }}>
+        <Card style={{ width: '100%' }}>
     <div className="category">
     <Card.Body>
-    <Card.Title className="mb-2 d-flex justify-content-space-between">Categoria Selezionata: {category.title}
-    <Button onClick={() => deleteCategory(category.id)} size="sm"><Trash /></Button>
+    <Card.Title className="mb-2 d-flex justify-content-space-between align-items-center">Categoria Selezionata: {category.title}
+    <Button onClick={() => deleteCategory(category.id)} variant="danger"><Trash /></Button>
     </Card.Title>
     <hr />
     <Card.Subtitle className="mb-1 text-muted">Compiti rimanenti: {tasks.filter((task) => !task.completed).length}</Card.Subtitle>
@@ -56,7 +56,7 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggle
 </Card.Text>
     <hr />
     <Card.Text>
-    <Form inline className='d-flex justify-content-center w-100'>
+    <Form inline className='mb-2 br-4 d-flex justify-content-center w-100 align-items-center'>
             <Row>
             <Col xs="auto">
                 <Form.Control

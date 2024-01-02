@@ -40,10 +40,10 @@ const Task = ({ task, deleteTask, categoryId, toggleComplete, editTask }) => {
         </Form>
         <Row className='justify-content-center g-1'>
         <ButtonGroup className="mb-2">
-                <Button onClick={() => toggleComplete(categoryId, task.id)}><Check2 /></Button>
-                <Button onClick={() => setIsEditing(!isEditing)}><PencilSquare /></Button>
+                <Button onClick={() => toggleComplete(categoryId, task.id)} variant="success"><Check2 /></Button>
+                <Button onClick={() => setIsEditing(!isEditing)}variant="secondary"><PencilSquare /></Button>
                 {isEditing && <Button onClick={handleSave}>Salva</Button>}
-                <Button onClick={() => deleteTask(categoryId, task.id)}><Trash /></Button>    
+                <Button onClick={() => deleteTask(categoryId, task.id)} variant="danger"><Trash /></Button>    
               </ButtonGroup>
         </Row>
     </div>

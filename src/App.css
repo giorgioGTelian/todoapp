@@ -33,15 +33,6 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-/**/
-.header {
-  
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-  font-size: calc(10px + 2vmin);
-  color: white;
+button {
+  color: #585858;
 }
-
