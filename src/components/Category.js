@@ -38,15 +38,10 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggle
     <Card.Title>Compiti</Card.Title>
     <Card.Text>
     {tasks && tasks.length === 0 && <Badge bg="warning" text="dark">
-        Non sono mai stati aggiunti compiti a questa categoria
+        Non sono mai stati aggiunti compiti
     </Badge>}
-    {/* if the all the task are completed add */}
     {tasks && tasks.length > 0 && tasks.every((task) => task.completed) && <Badge bg="success" text="dark">
-        Tutti i compiti sono stati completati per questa categoria
-    </Badge>}
-    {/* if all the task are eliminated add */}
-    {tasks && tasks.length > 0 && tasks.every((task) => task.deleted) && <Badge bg="danger" text="dark">
-        Tutti i compiti sono stati eliminati per questa categoria
+        Tutti i compiti sono stati completati
     </Badge>}
     
     {tasks && tasks.length > 0 && tasks?.filter(task => !task.completed).map((task) => (
@@ -55,10 +50,10 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggle
 
 </Card.Text>
     <hr />
-    <Card.Text>
-    <Form inline className='mb-2 br-4 d-flex justify-content-center w-100 align-items-center'>
+    <Card.Text className="mb-2 br-4 d-flex justify-content-space-between align-items-center" style={{ justifyContent: 'space-between!important' }}>
+    <Form inline className='g-1 justify-content-flex-start'>
             <Row>
-            <Col xs="auto">
+            <Col xs="auto" className='justify-content-center g-1'>
                 <Form.Control
                 type="text" 
                 placeholder="Aggiungi un compito..." 
@@ -67,7 +62,7 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggle
                 className="me-2"
                 />
             </Col>
-            <Col xs="auto">
+            <Col xs="auto" className='justify-content-center g-1'>
             <Button onClick={handleAddTask}>Aggiungi Compito</Button>
             </Col>
             </Row>
