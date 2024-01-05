@@ -123,8 +123,8 @@ const App = () => {
         </Row>
       </Form>
     </Navbar>  
-    <div className="content_wrapper">
-    <AllTabs categories={categories} addTask={addTask} deleteTask={deleteTask} deleteCategory={deleteCategory} editTask={editTask} toggleComplete={toggleComplete} />
+    <div className="w-100 h-100">
+    <AllTabs className="w-100 h-100" categories={categories} addTask={addTask} deleteTask={deleteTask} deleteCategory={deleteCategory} editTask={editTask} toggleComplete={toggleComplete} />
     </div>
   </div>
   </>
