@@ -115,9 +115,9 @@ const App = () => {
     
   <PageTitle>TODO List</PageTitle>
   <Navbar className="bg-body-tertiary justify-content-between navbar.header">
-      <Form inline className='g-1 d-flex justify-content-center w-100'>
+      <Form inline className='d-flex justify-content-center w-100'>
         <Row>
-          <Col xs="auto" className='justify-content-center g-1'>
+          <Col xs="auto" className='justify-content-center'>
             <Form.Control
               type="text" 
               placeholder="Aggiungi una categoria..." 
@@ -126,7 +126,7 @@ const App = () => {
               className="me-2"
             />
           </Col>
-          <Col xs="auto" className='justify-content-center g-1'>
+          <Col xs="auto" className='justify-content-center'>
           <Button variant="primary" onClick={addCategory}>
         Aggiungi Categoria
         </Button>
