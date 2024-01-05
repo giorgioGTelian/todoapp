@@ -27,12 +27,12 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggle
     const [showToast, setShowToast] = useState(false);
  
     const handleAddTask = () => {
-    if (newTaskTitle === '') {
-    setShowToast(true);
-    } else {
-    addTask(category.id, newTaskTitle);
-    setNewTaskTitle('');
-    }
+        if (newTaskTitle.trim() !== '') {
+            addTask(category.id, newTaskTitle);
+            setNewTaskTitle('');
+        } else {
+            setShowToast(true);
+        }
     };
 
     return (
@@ -77,6 +77,21 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggle
             <Col xs="auto" className='justify-content-center g-1'>
             <Button onClick={handleAddTask}>Aggiungi Compito</Button>
             </Col>
+            {showToast && 
+                <Toast
+                position="center"
+                    toastOptions={{
+                        style: {
+                        fontSize: '1.4rem',
+                        },
+                    }}
+                onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide>
+                    <Toast.Header>
+                    <strong className="me-auto">Errore</strong>
+                    </Toast.Header>
+                    <Toast.Body>Campi nulli non accetti</Toast.Body>
+                </Toast>
+                }
             </Row>
         </Form>
     </Card.Text>
@@ -84,21 +99,7 @@ const Category = ({ category, tasks, addTask, deleteTask, deleteCategory, toggle
     </div>
     </Card>
     
-    {showToast && 
-    <Toast
-    position="center"
-        toastOptions={{
-            style: {
-            fontSize: '1.4rem',
-            },
-        }}
-    onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide>
-        <Toast.Header>
-        <strong className="me-auto">Errore</strong>
-        </Toast.Header>
-        <Toast.Body>Campi nulli non accetti</Toast.Body>
-    </Toast>
-    }
+    
     </>
     );
 };

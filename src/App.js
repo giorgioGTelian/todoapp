@@ -53,13 +53,13 @@ const App = () => {
 
   const addTask = (categoryId, taskTitle) => {
   setCategories(
-  categories.map((category) => {
-    if (category.id === categoryId) {
-      return { ...category, tasks: [...category.tasks, { id: Date.now(), title: taskTitle, completed: false }] };
-    } else {
-      return category;
-    }
-  })
+    categories.map((category) => {
+      if (category.id === categoryId) {
+        return { ...category, tasks: [...category.tasks, { id: Date.now(), title: taskTitle, completed: false }] };
+      } else {
+        return category;
+      }
+    })
   );
   };
 
