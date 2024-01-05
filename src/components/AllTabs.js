@@ -10,15 +10,12 @@ import Container from 'react-bootstrap/Container';
 const AllTabs = ({ categories, addTask, deleteTask, deleteCategory, toggleComplete, editTask }) => {
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
     const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1224px)' });
-   
     const [activeKey, setActiveKey] = useState(categories[0]?.id || '');
-    const [showNavbar, setShowNavbar] = useState(true);
-   
+    const [showNavbar, setShowNavbar] = useState(false);
     const handleSelect = (selectedKey) => {
     setActiveKey(selectedKey);
     setShowNavbar(false);
     };
-   
     return (
     <>
     {isTabletOrMobile && [false].map((expand) => (

@@ -10,6 +10,8 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import Toast from 'react-bootstrap/Toast';
+
 /**
  * Represents the main component of the TODO app.
  * @returns {JSX.Element} The JSX element representing the App component.
@@ -17,6 +19,7 @@ import Col from 'react-bootstrap/Col';
 const App = () => {
   const [categories, setCategories] = useState([]);
   const [newCategoryTitle, setNewCategoryTitle] = useState('');
+  const [showToast, setShowToast] = useState(false);
 
   /* storage */
   useEffect(() => {
@@ -32,10 +35,16 @@ const App = () => {
 
   /* functions */
   const addCategory = () => {
-  if (newCategoryTitle !== '') {
-  setCategories([...categories, { id: Date.now(), title: newCategoryTitle, tasks: [] }]);
-  setNewCategoryTitle('');
-  }
+    if (newCategoryTitle.trim() !== '') {
+      setCategories([...categories, { id: Date.now(), title: newCategoryTitle, tasks: [] }]);
+      setNewCategoryTitle('');
+    } else {
+      setShowToast(true);
+    }
+  };
+ 
+  const hideToast = () => {
+    setShowToast(false);
   };
 
   const deleteCategory = (categoryId) => {
@@ -102,6 +111,8 @@ const App = () => {
   return (
     <>
     <div className="main_content">
+    
+    
   <PageTitle>TODO List</PageTitle>
   <Navbar className="bg-body-tertiary justify-content-between navbar.header">
       <Form inline className='g-1 d-flex justify-content-center w-100'>
@@ -125,6 +136,14 @@ const App = () => {
     </Navbar>  
     <div className="w-100 h-100">
     <AllTabs className="w-100 h-100" categories={categories} addTask={addTask} deleteTask={deleteTask} deleteCategory={deleteCategory} editTask={editTask} toggleComplete={toggleComplete} />
+    {showToast && (
+        <Toast onClose={hideToast} delay={3000} autohide position="middle-center">
+          <Toast.Header>
+            <strong className="me-auto">Attenzione</strong>
+          </Toast.Header>
+          <Toast.Body>Non è possibile inserire un campo vuoto!</Toast.Body>
+        </Toast>
+      )}
     </div>
   </div>
   </>
